@@ -1,4 +1,6 @@
-
+body {
+  text-align: center;
+}
 
 .flex-container {
   display: flex;
@@ -18,4 +20,17 @@
 
 img {
   max-width: 50%;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+}
+li {
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+}
+li:hover {
+  cursor: pointer;
 }
