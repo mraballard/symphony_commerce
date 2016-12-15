@@ -10,10 +10,11 @@
   <body ng-controller="mainController as main">
     <h1>Store App</h1>
 
-    {{1+1}}
+    <input ng-click="main.filter()" type="checkbox" name="filterPrice">
+    <label for="filterPrice">Filter for Items less than $20</label>
 
     <div class="flex-container">
-      <div class="card" ng-repeat="product in main.products">
+      <div class="card" ng-repeat="product in main.products" ng-if="product.defaultPriceInCents < main.filterPrice">
           <img src="http:{{product.mainImage.ref}}" alt="{{product.name}}">
           <h3>{{product.name}}</h3>
           <h4>{{product.defaultPriceInCents / 100 | currency}}</h4>
