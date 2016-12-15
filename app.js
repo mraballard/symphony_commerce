@@ -9,7 +9,8 @@
       url: `https://sneakpeeq-sites.s3.amazonaws.com/interviews/ce/feeds/store.js`
     })
     .then(function(response){
-      console.log(response.data);
+      self.products = response.data.products;
+      console.log(self.products);
     })
     .catch(function(err) {
       console.log(err);
