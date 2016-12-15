@@ -13,8 +13,32 @@
     <input ng-click="main.filter()" type="checkbox" name="filterPrice">
     <label for="filterPrice">Filter for Items less than $20</label>
 
-    <div class="flex-container">
-      <div class="card" ng-repeat="product in main.products" ng-if="product.defaultPriceInCents < main.filterPrice">
+    <ul>
+      <li ng-click="main.sortByName()">Sort products by name</li>
+      <li ng-click="main.sortByPrice()">Sort products by price</li>
+      <li ng-click="main.sortByDate()">Sort products by date</li>
+    </ul>
+
+<!-- SORT BY NAME -->
+    <div ng-show="main.nameSort" class="flex-container">
+      <div class="card" ng-repeat="product in main.products | orderBy: 'name'" ng-if="product.defaultPriceInCents < main.filterPrice">
+          <img src="http:{{product.mainImage.ref}}" alt="{{product.name}}">
+          <h3>{{product.name}}</h3>
+          <h4>{{product.defaultPriceInCents / 100 | currency}}</h4>
+      </div>
+    </div>
+<!-- SORT BY PRICE -->
+
+    <div ng-show="main.priceSort" class="flex-container">
+      <div class="card" ng-repeat="product in main.products | orderBy: 'defaultPriceInCents'" ng-if="product.defaultPriceInCents < main.filterPrice">
+          <img src="http:{{product.mainImage.ref}}" alt="{{product.name}}">
+          <h3>{{product.name}}</h3>
+          <h4>{{product.defaultPriceInCents / 100 | currency}}</h4>
+      </div>
+    </div>
+<!-- SORT BY DATE -->
+    <div ng-show="main.dateSort" class="flex-container">
+      <div class="card" ng-repeat="product in main.products | orderBy: 'createdAt'" ng-if="product.defaultPriceInCents < main.filterPrice">
           <img src="http:{{product.mainImage.ref}}" alt="{{product.name}}">
           <h3>{{product.name}}</h3>
           <h4>{{product.defaultPriceInCents / 100 | currency}}</h4>
